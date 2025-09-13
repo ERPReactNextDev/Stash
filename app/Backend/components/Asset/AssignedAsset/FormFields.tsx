@@ -293,6 +293,37 @@ const FormFields: React.FC<FormFieldsProps> = ({
                     </div>
                 ))}
 
+                <div>
+                    <label className="block text-xs font-bold mb-1">Status</label>
+                    <select
+                        name="Status"
+                        value={postData.Status || ""}
+                        onChange={handleChange}
+                        className="border rounded p-2 text-xs w-full" >
+                        <option value="">Select Status</option>
+                        <option value="Deployed">Deployed</option>
+                        <option value="Lend">Lend</option>
+                        <option value="Spare">Spare</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label className="block text-xs font-bold mb-1">Location</label>
+                    <select
+                        name="Location"
+                        value={postData.Location || ""}
+                        onChange={handleChange}
+                        className="border rounded p-2 text-xs w-full"
+                    >
+                        <option value="">Select Location</option>
+                        <option value="CDO">CDO</option>
+                        <option value="Cebu">Cebu</option>
+                        <option value="J&L">J&L</option>
+                        <option value="Pasig">Pasig</option>
+                        <option value="Primex">Primex</option>
+                    </select>
+                </div>
+
                 {/* Remarks */}
                 <div className="col-span-2">
                     <label className="block text-xs font-bold mb-1">Remarks</label>
