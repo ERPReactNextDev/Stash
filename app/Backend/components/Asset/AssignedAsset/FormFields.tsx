@@ -69,18 +69,22 @@ const FormFields: React.FC<FormFieldsProps> = ({
     }, []);
 
     // Fetch inventory
+    // Fetch inventory (excluding disposed assets)
     useEffect(() => {
         const fetchInventory = async () => {
             try {
                 const res = await fetch("/api/Backend/Asset/Inventory/fetch");
                 const data = await res.json();
-                setInventory(data.data || []);
+                // Filter out items with Status = 'Disposal'
+                const filteredData = (data.data || []).filter((item: any) => item.status !== "disposal");
+                setInventory(filteredData);
             } catch (err) {
                 console.error("❌ Failed to fetch inventory:", err);
             }
         };
         fetchInventory();
     }, []);
+
 
     // Auto-calculate AssetAge from PurchaseDate
     useEffect(() => {
